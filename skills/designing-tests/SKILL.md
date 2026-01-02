@@ -1,11 +1,25 @@
 ---
-name: testing-strategy
-description: Designs comprehensive testing strategies for any codebase. Use when adding tests, improving coverage, setting up testing infrastructure, or when asked about testing approaches.
+name: designing-tests
+description: Designs and implements testing strategies for any codebase. Use when adding tests, improving coverage, setting up testing infrastructure, debugging test failures, or when asked about unit tests, integration tests, or E2E testing.
 ---
 
-# Testing Strategy Skill
+# Designing Tests
 
-## Testing Pyramid Approach
+## Test Implementation Workflow
+
+Copy this checklist and track progress:
+
+```
+Test Implementation Progress:
+- [ ] Step 1: Identify what to test
+- [ ] Step 2: Select appropriate test type
+- [ ] Step 3: Write tests following templates
+- [ ] Step 4: Run tests and verify passing
+- [ ] Step 5: Check coverage meets targets
+- [ ] Step 6: Fix any failing tests
+```
+
+## Testing Pyramid
 
 Apply the testing pyramid for balanced coverage:
 
@@ -22,7 +36,7 @@ Apply the testing pyramid for balanced coverage:
                    - Business logic focus
 ```
 
-## Framework Selection by Language
+## Framework Selection
 
 ### JavaScript/TypeScript
 | Type | Recommended | Alternative |
@@ -56,14 +70,14 @@ describe('[Unit] ComponentName', () => {
     it('should [expected behavior] when [condition]', () => {
       // Arrange
       const input = createTestInput();
-      
+
       // Act
       const result = methodName(input);
-      
+
       // Assert
       expect(result).toEqual(expectedOutput);
     });
-    
+
     it('should throw error when [invalid condition]', () => {
       expect(() => methodName(invalidInput)).toThrow(ExpectedError);
     });
@@ -77,16 +91,16 @@ describe('[Integration] API /users', () => {
   beforeAll(async () => {
     await setupTestDatabase();
   });
-  
+
   afterAll(async () => {
     await teardownTestDatabase();
   });
-  
+
   it('should create user and return 201', async () => {
     const response = await request(app)
       .post('/users')
       .send({ name: 'Test', email: 'test@example.com' });
-    
+
     expect(response.status).toBe(201);
     expect(response.body.id).toBeDefined();
   });
@@ -98,11 +112,11 @@ describe('[Integration] API /users', () => {
 describe('[E2E] User Registration Flow', () => {
   it('should complete registration successfully', async ({ page }) => {
     await page.goto('/register');
-    
+
     await page.fill('[data-testid="email"]', 'new@example.com');
     await page.fill('[data-testid="password"]', 'SecurePass123!');
     await page.click('[data-testid="submit"]');
-    
+
     await expect(page.locator('.welcome-message')).toBeVisible();
     await expect(page).toHaveURL('/dashboard');
   });
@@ -190,4 +204,33 @@ export const handlers = [
 // Time mocking
 vi.useFakeTimers();
 vi.setSystemTime(new Date('2024-01-01'));
+```
+
+## Test Validation Loop
+
+After writing tests, run this validation:
+
+```
+Test Validation:
+- [ ] All tests pass: `npm test`
+- [ ] Coverage meets thresholds: `npm test -- --coverage`
+- [ ] No flaky tests (run multiple times)
+- [ ] Tests are independent (order doesn't matter)
+- [ ] Test names clearly describe behavior
+```
+
+If any tests fail, fix them before proceeding. If coverage is below target, add more tests for uncovered code paths.
+
+```bash
+# Run tests
+npm test
+
+# Run with coverage
+npm test -- --coverage
+
+# Run specific test file
+npm test -- path/to/test.spec.ts
+
+# Run in watch mode during development
+npm test -- --watch
 ```

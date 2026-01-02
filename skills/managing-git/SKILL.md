@@ -1,9 +1,23 @@
 ---
-name: git-workflow
-description: Guides Git workflows, branching strategies, commit conventions, and collaboration patterns. Use when working with Git, creating PRs, managing branches, or when asked about version control.
+name: managing-git
+description: Manages Git workflows including branching, commits, and pull requests. Use when working with Git, creating commits, opening PRs, managing branches, resolving conflicts, or when asked about version control best practices.
 ---
 
-# Git Workflow Skill
+# Managing Git
+
+## Feature Development Workflow
+
+Copy this checklist and track progress:
+
+```
+Feature Development Progress:
+- [ ] Step 1: Create feature branch from main
+- [ ] Step 2: Make changes with atomic commits
+- [ ] Step 3: Rebase on latest main
+- [ ] Step 4: Push and create PR
+- [ ] Step 5: Address review feedback
+- [ ] Step 6: Merge after approval
+```
 
 ## Branching Strategies
 
@@ -80,7 +94,20 @@ fix/BUG-456-null-pointer
 chore/TECH-789-upgrade-deps
 ```
 
-## PR Best Practices
+## Pull Request Workflow
+
+Copy this checklist when creating PRs:
+
+```
+PR Checklist:
+- [ ] Code follows project conventions
+- [ ] Tests added/updated for changes
+- [ ] All tests pass locally
+- [ ] No merge conflicts with main
+- [ ] Documentation updated if needed
+- [ ] No security vulnerabilities introduced
+- [ ] PR description explains the "why"
+```
 
 ### PR Template
 ```markdown
@@ -98,19 +125,14 @@ chore/TECH-789-upgrade-deps
 
 ## Screenshots (if UI changes)
 [Before/After screenshots]
-
-## Checklist
-- [ ] Code follows project conventions
-- [ ] Documentation updated
-- [ ] No security vulnerabilities introduced
 ```
 
 ### PR Size Guidelines
-| Size | Lines Changed | Review Time |
-|------|---------------|-------------|
-| XS | < 50 | < 15 min |
-| S | 50-200 | 15-30 min |
-| M | 200-500 | 30-60 min |
+| Size | Lines Changed | Review Guidance |
+|------|---------------|-----------------|
+| XS | < 50 | Quick review |
+| S | 50-200 | Standard review |
+| M | 200-500 | Thorough review |
 | L | 500+ | Split if possible |
 
 ## Common Git Commands
@@ -167,3 +189,18 @@ git stash push -m "WIP: feature description"
 git stash list
 git stash pop
 ```
+
+## Commit Validation
+
+Before pushing, validate commits:
+
+```
+Commit Validation:
+- [ ] Each commit has a clear, descriptive message
+- [ ] Commit type matches the change (feat, fix, etc.)
+- [ ] No WIP or temporary commits
+- [ ] No secrets or credentials committed
+- [ ] Changes are atomic (one logical change per commit)
+```
+
+If validation fails, use `git rebase -i` to clean up commit history before pushing.

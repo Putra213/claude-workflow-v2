@@ -1,11 +1,26 @@
 ---
-name: api-design
-description: Guides REST and GraphQL API design, including endpoints, error handling, versioning, and documentation. Use when designing APIs, creating endpoints, or when asked about API patterns.
+name: designing-apis
+description: Designs REST and GraphQL APIs including endpoints, error handling, versioning, and documentation. Use when creating new APIs, designing endpoints, reviewing API contracts, or when asked about REST, GraphQL, or API patterns.
 ---
 
-# API Design Skill
+# Designing APIs
 
-## REST API Design Principles
+## API Design Workflow
+
+Copy this checklist and track progress:
+
+```
+API Design Progress:
+- [ ] Step 1: Define resources and relationships
+- [ ] Step 2: Design endpoint structure
+- [ ] Step 3: Define request/response formats
+- [ ] Step 4: Plan error handling
+- [ ] Step 5: Add authentication/authorization
+- [ ] Step 6: Document with OpenAPI spec
+- [ ] Step 7: Validate design against checklist
+```
+
+## REST API Design
 
 ### URL Structure
 ```
@@ -43,7 +58,7 @@ GET    /users?page=2&limit=20&sort=-createdAt
 
 ### Response Formats
 
-#### Success Response
+**Success Response:**
 ```json
 {
   "data": {
@@ -60,7 +75,7 @@ GET    /users?page=2&limit=20&sort=-createdAt
 }
 ```
 
-#### List Response with Pagination
+**List Response with Pagination:**
 ```json
 {
   "data": [...],
@@ -78,7 +93,7 @@ GET    /users?page=2&limit=20&sort=-createdAt
 }
 ```
 
-#### Error Response
+**Error Response:**
 ```json
 {
   "error": {
@@ -92,37 +107,34 @@ GET    /users?page=2&limit=20&sort=-createdAt
     ]
   },
   "meta": {
-    "requestId": "abc-123",
-    "timestamp": "2024-01-01T00:00:00Z"
+    "requestId": "abc-123"
   }
 }
 ```
 
 ## API Versioning
 
-### URL Versioning (Recommended)
+**URL Versioning (Recommended):**
 ```
 /api/v1/users
 /api/v2/users
 ```
 
-### Header Versioning
+**Header Versioning:**
 ```
 Accept: application/vnd.api+json; version=1
 ```
 
 ## Authentication Patterns
 
-### JWT Bearer Token
+**JWT Bearer Token:**
 ```
 Authorization: Bearer eyJhbGciOiJIUzI1NiIs...
 ```
 
-### API Key
+**API Key:**
 ```
 X-API-Key: your-api-key
-# or
-?api_key=your-api-key
 ```
 
 ## Rate Limiting Headers
@@ -133,65 +145,9 @@ X-RateLimit-Reset: 1609459200
 Retry-After: 60
 ```
 
-## OpenAPI Specification Template
-```yaml
-openapi: 3.0.3
-info:
-  title: API Name
-  version: 1.0.0
-  description: API description
-
-servers:
-  - url: https://api.example.com/v1
-
-paths:
-  /users:
-    get:
-      summary: List users
-      parameters:
-        - name: page
-          in: query
-          schema:
-            type: integer
-            default: 1
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserList'
-
-components:
-  schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-      required:
-        - id
-        - name
-        - email
-
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-
-security:
-  - bearerAuth: []
-```
-
 ## GraphQL Patterns
 
-### Schema Design
+**Schema Design:**
 ```graphql
 type Query {
   user(id: ID!): User
@@ -221,7 +177,29 @@ type UserPayload {
 }
 ```
 
-## API Security Checklist
+## OpenAPI Specification Template
+
+See [OPENAPI-TEMPLATE.md](OPENAPI-TEMPLATE.md) for the full OpenAPI 3.0 specification template.
+
+## API Design Validation
+
+After completing the design, validate against this checklist:
+
+```
+Validation Checklist:
+- [ ] All endpoints use nouns, not verbs
+- [ ] HTTP methods match operations correctly
+- [ ] Consistent response format across endpoints
+- [ ] Error responses include actionable details
+- [ ] Pagination implemented for list endpoints
+- [ ] Authentication defined for protected endpoints
+- [ ] Rate limiting headers documented
+- [ ] OpenAPI spec is complete and valid
+```
+
+If validation fails, return to the relevant design step and address the issues.
+
+## Security Checklist
 - [ ] HTTPS only
 - [ ] Authentication on all endpoints
 - [ ] Authorization checks

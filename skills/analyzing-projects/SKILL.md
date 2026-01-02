@@ -1,20 +1,33 @@
 ---
-name: project-analysis
-description: Analyzes any project to understand its structure, tech stack, patterns, and conventions. Use when starting work on a new codebase, onboarding, or when asked "how does this project work?" or "what's the architecture?"
+name: analyzing-projects
+description: Analyzes codebases to understand structure, tech stack, patterns, and conventions. Use when onboarding to a new project, exploring unfamiliar code, or when asked "how does this work?" or "what's the architecture?"
 ---
 
-# Project Analysis Skill
+# Analyzing Projects
 
-When analyzing a project, systematically gather and present information in this order:
+## Project Analysis Workflow
 
-## 1. Quick Overview (30 seconds)
+Copy this checklist and track progress:
+
+```
+Project Analysis Progress:
+- [ ] Step 1: Quick overview (README, root files)
+- [ ] Step 2: Detect tech stack
+- [ ] Step 3: Map project structure
+- [ ] Step 4: Identify key patterns
+- [ ] Step 5: Find development workflow
+- [ ] Step 6: Generate summary report
+```
+
+## Step 1: Quick Overview
+
 ```bash
 # Check for common project markers
 ls -la
 cat README.md 2>/dev/null | head -50
 ```
 
-## 2. Tech Stack Detection
+## Step 2: Tech Stack Detection
 
 ### Package Managers & Dependencies
 - `package.json` → Node.js/JavaScript/TypeScript
@@ -36,7 +49,7 @@ cat README.md 2>/dev/null | head -50
 - `serverless.yml` → Serverless Framework
 - `.github/workflows/` → GitHub Actions
 
-## 3. Project Structure Analysis
+## Step 3: Project Structure Analysis
 
 Present as a tree with annotations:
 ```
@@ -51,7 +64,7 @@ project/
 └── config/           # Configuration
 ```
 
-## 4. Key Patterns Identification
+## Step 4: Key Patterns Identification
 
 Look for and report:
 - **Architecture**: Monolith, Microservices, Serverless, Monorepo
@@ -61,7 +74,7 @@ Look for and report:
 - **Authentication**: JWT, OAuth, Sessions
 - **Testing**: Jest, Pytest, Go test, etc.
 
-## 5. Development Workflow
+## Step 5: Development Workflow
 
 Check for:
 - `.eslintrc`, `.prettierrc` → Linting/Formatting
@@ -69,7 +82,9 @@ Check for:
 - `Makefile` → Build commands
 - `scripts/` in package.json → NPM scripts
 
-## 6. Output Format
+## Step 6: Output Format
+
+Generate a summary using this template:
 
 ```markdown
 # Project: [Name]
@@ -110,3 +125,18 @@ Check for:
 | Test | `npm test` |
 | Build | `npm run build` |
 ```
+
+## Analysis Validation
+
+After completing analysis, verify:
+
+```
+Analysis Validation:
+- [ ] All major directories explained
+- [ ] Tech stack accurately identified
+- [ ] Entry points documented
+- [ ] Development commands verified working
+- [ ] No assumptions made without evidence
+```
+
+If any items cannot be verified, note them as "needs clarification" in the report.

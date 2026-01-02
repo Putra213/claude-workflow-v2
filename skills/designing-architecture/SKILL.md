@@ -1,9 +1,23 @@
 ---
-name: architecture-patterns
-description: Provides guidance on software architecture patterns and design decisions. Use when designing systems, choosing patterns, structuring projects, or when asked about architectural approaches.
+name: designing-architecture
+description: Designs software architecture and selects appropriate patterns for projects. Use when designing systems, choosing architecture patterns, structuring projects, making technical decisions, or when asked about microservices, monoliths, or architectural approaches.
 ---
 
-# Architecture Patterns Skill
+# Designing Architecture
+
+## Architecture Decision Workflow
+
+Copy this checklist and track progress:
+
+```
+Architecture Design Progress:
+- [ ] Step 1: Understand requirements and constraints
+- [ ] Step 2: Assess project size and team capabilities
+- [ ] Step 3: Select architecture pattern
+- [ ] Step 4: Define directory structure
+- [ ] Step 5: Document trade-offs and decision
+- [ ] Step 6: Validate against decision framework
+```
 
 ## Pattern Selection Guide
 
@@ -137,7 +151,7 @@ src/
 
 ## Decision Framework
 
-When making architectural decisions, consider:
+When making architectural decisions, evaluate against these criteria:
 
 1. **Simplicity** - Start simple, evolve when needed
 2. **Team Skills** - Match architecture to team capabilities
@@ -145,9 +159,15 @@ When making architectural decisions, consider:
 4. **Scalability** - Consider growth trajectory
 5. **Maintainability** - Optimize for change
 
-### Trade-off Analysis Template
+## Trade-off Analysis Template
+
+Use this template to document architectural decisions:
+
 ```markdown
 ## Decision: [What we're deciding]
+
+### Context
+[Why this decision is needed now]
 
 ### Options Considered
 1. Option A: [Description]
@@ -167,3 +187,21 @@ We chose [Option] because [reasoning].
 - [What this enables]
 - [What this constrains]
 ```
+
+## Validation Checklist
+
+After selecting an architecture, validate against:
+
+```
+Architecture Validation:
+- [ ] Matches project size and complexity
+- [ ] Aligns with team skills and experience
+- [ ] Supports current requirements
+- [ ] Allows for anticipated growth
+- [ ] Dependencies flow inward (core has no external deps)
+- [ ] Clear boundaries between modules/layers
+- [ ] Testing strategy is feasible
+- [ ] Trade-offs are documented
+```
+
+If validation fails, reconsider the pattern selection or adjust the implementation approach.

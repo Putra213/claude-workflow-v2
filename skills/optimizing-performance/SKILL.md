@@ -1,15 +1,28 @@
 ---
-name: performance-optimization
-description: Guides performance analysis and optimization for any application. Use when diagnosing slowness, optimizing code, improving load times, or when asked about performance.
+name: optimizing-performance
+description: Analyzes and optimizes application performance across frontend, backend, and database layers. Use when diagnosing slowness, improving load times, optimizing queries, reducing bundle size, or when asked about performance issues.
 ---
 
-# Performance Optimization Skill
+# Optimizing Performance
 
-## Performance Analysis Process
+## Performance Optimization Workflow
 
-### 1. Measure First
-Never optimize without data. Always profile before changing code.
+Copy this checklist and track progress:
 
+```
+Performance Optimization Progress:
+- [ ] Step 1: Measure baseline performance
+- [ ] Step 2: Identify bottlenecks
+- [ ] Step 3: Apply targeted optimizations
+- [ ] Step 4: Measure again and compare
+- [ ] Step 5: Repeat if targets not met
+```
+
+**Critical Rule**: Never optimize without data. Always profile before and after changes.
+
+## Step 1: Measure Baseline
+
+### Profiling Commands
 ```bash
 # Node.js profiling
 node --prof app.js
@@ -23,9 +36,9 @@ python -m pstats profile.stats
 lighthouse https://example.com --output=json
 ```
 
-### 2. Identify Bottlenecks
+## Step 2: Identify Bottlenecks
 
-#### Common Bottleneck Categories
+### Common Bottleneck Categories
 | Category | Symptoms | Tools |
 |----------|----------|-------|
 | CPU | High CPU usage, slow computation | Profiler, flame graphs |
@@ -33,11 +46,11 @@ lighthouse https://example.com --output=json
 | I/O | Slow disk/network, waiting | strace, network inspector |
 | Database | Slow queries, lock contention | Query analyzer, EXPLAIN |
 
-### 3. Apply Optimizations
+## Step 3: Apply Optimizations
 
-## Frontend Optimizations
+### Frontend Optimizations
 
-### Bundle Size
+**Bundle Size:**
 ```javascript
 // ❌ Import entire library
 import _ from 'lodash';
@@ -49,7 +62,7 @@ import debounce from 'lodash/debounce';
 const HeavyComponent = lazy(() => import('./HeavyComponent'));
 ```
 
-### Rendering
+**Rendering:**
 ```javascript
 // ❌ Render on every parent update
 function Child({ data }) {
@@ -65,13 +78,13 @@ const Child = memo(function Child({ data }) {
 const processed = useMemo(() => expensiveCalc(data), [data]);
 ```
 
-### Images
+**Images:**
 ```html
 <!-- ❌ Unoptimized -->
 <img src="large-image.jpg" />
 
 <!-- ✅ Optimized -->
-<img 
+<img
   src="image.webp"
   srcset="image-300.webp 300w, image-600.webp 600w"
   sizes="(max-width: 600px) 300px, 600px"
@@ -80,9 +93,9 @@ const processed = useMemo(() => expensiveCalc(data), [data]);
 />
 ```
 
-## Backend Optimizations
+### Backend Optimizations
 
-### Database Queries
+**Database Queries:**
 ```sql
 -- ❌ N+1 Query Problem
 SELECT * FROM users;
@@ -90,39 +103,39 @@ SELECT * FROM users;
 SELECT * FROM orders WHERE user_id = ?;
 
 -- ✅ Single query with JOIN
-SELECT u.*, o.* 
-FROM users u 
+SELECT u.*, o.*
+FROM users u
 LEFT JOIN orders o ON u.id = o.user_id;
 
 -- ✅ Or use pagination
 SELECT * FROM users LIMIT 100 OFFSET 0;
 ```
 
-### Caching Strategy
+**Caching Strategy:**
 ```javascript
 // Multi-layer caching
 const getUser = async (id) => {
   // L1: In-memory cache (fastest)
   let user = memoryCache.get(`user:${id}`);
   if (user) return user;
-  
+
   // L2: Redis cache (fast)
   user = await redis.get(`user:${id}`);
   if (user) {
     memoryCache.set(`user:${id}`, user, 60);
     return JSON.parse(user);
   }
-  
+
   // L3: Database (slow)
   user = await db.users.findById(id);
   await redis.setex(`user:${id}`, 3600, JSON.stringify(user));
   memoryCache.set(`user:${id}`, user, 60);
-  
+
   return user;
 };
 ```
 
-### Async Processing
+**Async Processing:**
 ```javascript
 // ❌ Blocking operation
 app.post('/upload', async (req, res) => {
@@ -137,9 +150,8 @@ app.post('/upload', async (req, res) => {
 });
 ```
 
-## Algorithm Optimizations
+### Algorithm Optimizations
 
-### Time Complexity Improvements
 ```javascript
 // ❌ O(n²) - nested loops
 function findDuplicates(arr) {
@@ -164,9 +176,21 @@ function findDuplicates(arr) {
 }
 ```
 
-## Performance Metrics
+## Step 4: Measure Again
 
-### Web Vitals (Target Values)
+After applying optimizations, re-run profiling and compare:
+
+```
+Comparison Checklist:
+- [ ] Run same profiling tools as baseline
+- [ ] Compare metrics before vs after
+- [ ] Verify no regressions in other areas
+- [ ] Document improvement percentages
+```
+
+## Performance Targets
+
+### Web Vitals
 | Metric | Good | Needs Work | Poor |
 |--------|------|------------|------|
 | LCP | < 2.5s | 2.5-4s | > 4s |
@@ -174,10 +198,25 @@ function findDuplicates(arr) {
 | CLS | < 0.1 | 0.1-0.25 | > 0.25 |
 | TTFB | < 800ms | 800ms-1.8s | > 1.8s |
 
-### API Performance (Target Values)
+### API Performance
 | Metric | Target |
 |--------|--------|
 | P50 Latency | < 100ms |
 | P95 Latency | < 500ms |
 | P99 Latency | < 1s |
 | Error Rate | < 0.1% |
+
+## Validation
+
+After optimization, validate results:
+
+```
+Performance Validation:
+- [ ] Metrics improved from baseline
+- [ ] No functionality regressions
+- [ ] No new errors introduced
+- [ ] Changes are sustainable (not one-time fixes)
+- [ ] Performance gains documented
+```
+
+If targets not met, return to Step 2 and identify remaining bottlenecks.
