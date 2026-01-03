@@ -47,7 +47,16 @@ claude plugin install ./claude-workflow
 
 ### Verify Installation
 
-After loading the plugin, these commands become available:
+After loading the plugin, verify it's working:
+
+```
+> /plugin
+```
+
+Tab to **Installed** - you should see `project-starter` listed.
+Tab to **Errors** - should be empty (no errors).
+
+These commands become available:
 
 ```
 /project-starter:architect    # Architecture-first mode
