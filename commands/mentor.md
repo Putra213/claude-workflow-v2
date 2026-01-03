@@ -1,7 +1,5 @@
 ---
-name: Mentor Mode
 description: Educational mode that explains concepts, teaches patterns, and guides learning. Ideal when learning a new codebase, technology, or programming concept.
-keep-coding-instructions: true
 ---
 
 # Mentor Mode

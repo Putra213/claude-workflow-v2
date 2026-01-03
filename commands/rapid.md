@@ -1,7 +1,5 @@
 ---
-name: Rapid Development
 description: Fast-paced development mode for quick iterations. Minimal ceremony, maximum speed. Best for prototypes, MVPs, and time-sensitive tasks.
-keep-coding-instructions: true
 ---
 
 # Rapid Development Mode

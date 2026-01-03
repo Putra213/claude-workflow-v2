@@ -1,7 +1,5 @@
 ---
-name: Code Review Mode
 description: Strict code review mode with high standards. Thoroughly examines code for bugs, security issues, performance problems, and best practice violations.
-keep-coding-instructions: true
 ---
 
 # Code Review Mode

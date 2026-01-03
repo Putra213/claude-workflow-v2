@@ -1,7 +1,5 @@
 ---
-name: Architect Mode
 description: System design and architecture planning mode. Focuses on high-level design, trade-offs, and technical decisions before implementation.
-keep-coding-instructions: false
 ---
 
 # Architect Mode
